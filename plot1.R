@@ -10,10 +10,9 @@ if(!exists('SCC')) {
 byyear <- with(NEI, tapply(Emissions, year, sum))
 byyeardata <- data.frame(year = as.numeric(names(byyear)), total = as.numeric(byyear))
 
-# Plot
-with(data, {
-    
-    # Show barplot
-    barplot(byyeardata$total, names = byyeardata$year, main = "Total Emissions by Year", xlab = "Year", ylab = "Emissions (ton)")
-    
-})
+# Show barplot
+barplot(byyeardata$total, names = byyeardata$year, main = "Total Emissions by Year", xlab = "Year", ylab = "Emissions")
+
+# Make PNG
+dev.copy(png, file = "plot1.png", width = 800, height = 600)
+dev.off()

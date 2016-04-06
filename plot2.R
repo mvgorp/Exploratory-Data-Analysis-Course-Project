@@ -13,10 +13,9 @@ NEI_baltimore <- subset(NEI, fips == "24510")
 byyear <- with(NEI_baltimore, tapply(Emissions, year, sum))
 byyeardata_balt <- data.frame(year = as.numeric(names(byyear)), total = as.numeric(byyear))
 
-# Plot
-with(data, {
-    
-    # Show barplot
-    barplot(byyeardata_balt$total, names = byyeardata_balt$year, main = "Total Emissions by Year in Baltimore", xlab = "Year", ylab = "Emissions (ton)")
-    
-})
+# Show barplot
+barplot(byyeardata_balt$total, names = byyeardata_balt$year, main = "Total Emissions by Year in Baltimore", xlab = "Year", ylab = "Emissions")
+
+# Make PNG
+dev.copy(png, file = "plot2.png", width = 800, height = 600)
+dev.off()
